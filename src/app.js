@@ -2,7 +2,7 @@ const paths={home:'M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z',u
 const icon=(n)=>'<svg aria-hidden="true" viewBox="0 0 24 24"><path d="'+(paths[n]||paths.shield)+'"/></svg>';
 const logo='<svg aria-hidden="true" viewBox="0 0 64 64"><path fill="#6728a2" d="M28 51C8 51 3 27 11 16c7-8 19 5 20 20z"/><path fill="#be3eb5" d="M34 51c20 0 28-25 19-37-8-10-21 9-21 24z"/><path fill="#f15ca7" d="M36 45c10-4 21-20 15-26-5-5-14 10-16 19z"/><path fill="#b999d4" d="M24 43C14 38 9 24 14 22c4-3 12 7 14 16z"/><path fill="#522181" d="M30 51c-4-7-3-20 1-20s6 13 3 20z"/><path fill="#bc3dba" d="M33 11c-5-7-10 1 0 7 10-6 5-14 0-7z"/></svg><span>Conecta Segura<span>Sua rede de apoio</span></span>';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)],esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const runtime=window.CONECTA_RUNTIME||{static:false,apiBase:''};
+const runtime=window.CONECTA_RUNTIME||{static:true,apiBase:'',config:{firebase:null,mapsKey:null,sms:false,whatsapp:false,live:false}};
 const storagePrefix='cs:'+location.pathname.replace(/[^a-z0-9/_-]/gi,'')+':';
 let stopHold=()=>{};
 const pages=[['inicio','home','Início'],['contatos','users','Contatos'],['localizacao','pin','Localização'],['ajuda','book','Como usar'],['ajustes','settings','Ajustes']];

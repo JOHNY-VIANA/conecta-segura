@@ -35,6 +35,9 @@ test('Pages never calls same-origin API and prevents real mode',async()=>{
  const h=harness();await Promise.resolve();assert.equal(h.requests.length,0);h.run('setDemo(false)');assert.equal(h.run('prefs.demo'),true);
  await assert.rejects(h.run("api('/api/alerts',{method:'POST'})"),/Backend não configurado/);assert.equal(h.requests.length,0);
 });
+test('Missing public configuration fails safely without probing Pages API',()=>{
+ const h=harness({runtime:null});assert.equal(h.requests.length,0);assert.equal(h.run('runtime.static'),true);assert.equal(h.run('prefs.demo'),true);
+});
 test('Countdown preserves cancel focus, cancels before send and guards duplicate requests',()=>{
  const h=harness();h.run('startCountdown()');const id=h.run('activeAlert.id');const focus=h.context.document.activeElement;
  h.tick(1000);assert.equal(h.run('activeAlert.remaining'),4);assert.equal(h.context.document.activeElement,focus);
